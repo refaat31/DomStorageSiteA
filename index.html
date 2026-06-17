@@ -17,12 +17,11 @@
   <iframe id="site-c-frame" title="Site C storage frame"></iframe>
   <script>
     const params = new URLSearchParams(location.search);
-    const siteC = params.get("c") || "https://sitec-t9c1.onrender.com/";
-    const frameUrl = new URL(siteC);
+    const frameUrl = new URL("https://referrer.refaatalamgir.com/");
     frameUrl.searchParams.set("embedder_site", "site_a");
     frameUrl.searchParams.set("embedder_origin", location.origin);
     for (const [key, value] of params.entries()) {
-      if (!frameUrl.searchParams.has(key)) frameUrl.searchParams.set(key, value);
+      frameUrl.searchParams.set(key, value);
     }
     document.getElementById("site-c-frame").src = frameUrl.toString();
     document.getElementById("meta").textContent = JSON.stringify({
